@@ -1,7 +1,7 @@
 FROM centos:centos7
 LABEL version="0.1"
 LABEL description="a centos7 based docker image for c++ development"
-LABEL maintainer="Bo Lu (bluevires@gmail.com)"
+LABEL maintainer="bolu-atx"
 
 RUN yum clean all && \
     yum -y install epel-release && \
