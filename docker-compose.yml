@@ -1,14 +1,14 @@
 version: '3'
 
 services:
-  dev:
+  gcc485:
     build: # use the Dockerfile in the current directory
       context: .
       dockerfile: Dockerfile
     security_opt: # options needed for gdb debugging
       - seccomp:unconfined
       - apparmor:unconfined
-    container_name: dev
+    container_name: gcc485
     ports:
       - "5566:22" # SSH
       - "7777:7777" # GDB Server
