@@ -33,5 +33,6 @@ RUN chmod +x /start.sh
 # Add dev user with password dev
 RUN useradd -ms /bin/bash dev
 RUN echo 'dev:dev' | chpasswd
+RUN echo 'root:root' | chpasswd
 
 CMD ["/start.sh"]
