@@ -7,7 +7,7 @@ RUN yum clean all && \
     yum -y install epel-release && \
     yum -y install git gcc-c++ openssl-static openssl-devel make chrpath \
         valgrind wget which openssl-libs libicu zlib git libtool rpm-build gzip tar \
-        openssh openssh-server openssh-clients && \
+        openssh openssh-server openssh-clients bzip2-devel && \
     yum -y install centos-release-scl && \
     yum -y install devtoolset-8-gdb && \
     yum -y clean all
