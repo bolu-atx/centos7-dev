@@ -37,7 +37,7 @@ function build_boost_158()
 
     if [ $? -eq 0 ]; then
         cd $boost_archive_dir
-        ./bootstrap.sh --prefix=$PREFIX
+        ./bootstrap.sh --prefix=$PREFIX/boost_158
         ./b2 -j 2 cxxflags="-std=c++11" link=shared,static address-model=64 variant=release threading=multi --layout=system install
         cd ..
         rm -rf boost*
@@ -53,8 +53,8 @@ function build_boost_167()
     download_boost $boost167_url
     if [ $? -eq 0 ] ; then
         cd $boost_archive_dir 
-        ./bootstrap.sh --prefix=$PREFIX
-        ./b2 -j 2 --prefix=$PREFIX cxxflags="-std=c++11 -fPIC" cflags=-fPIC link=shared,static address-model=64 variant=release threading=multi --layout=system --with-system --with-filesystem --with-thread --with-regex --with-serialization install
+        ./bootstrap.sh --prefix=$PREFIX/boost_167
+        ./b2 -j 2 cxxflags="-std=c++11 -fPIC" cflags=-fPIC link=shared,static address-model=64 variant=release threading=multi --layout=system --with-system --with-filesystem --with-thread --with-regex --with-serialization install
         cd ..
     else
         echo "Cannot download boost 1.67, check the url"
