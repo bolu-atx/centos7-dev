@@ -30,3 +30,5 @@ cd gcc-4.9.3
 ./configure --disable-multilib --enable-languages=c,c++
 make -j `grep processor /proc/cpuinfo | wc -l`
 make install
+make clean
+rm -rf /usr/src/gcc-4.9*
