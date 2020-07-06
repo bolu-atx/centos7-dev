@@ -89,9 +89,48 @@ function install_mkl()
     yum install -y intel-mkl intel-openmp
 }
 
-read -p "Install MKL?" choice
+read -p "Install MKL? (y/n)" choice
 case "$choice" in 
     y|Y ) install_mkl;;
     n|N ) echo "skip MKL install";;
+    * ) echo "invalid";;
+esac
+
+
+
+function install_fftw()
+{
+    FFTW_URL=http://www.fftw.org/fftw-3.3.8.tar.gz
+    INSTALL_PREFIX=/usr
+    if [[ ! -z "$1" ]] ; then
+        INSTALL_PREFIX=$1
+    fi
+
+    ########################################################################################################################
+    CWD=$PWD
+
+    ########################################################################################################################
+    # FFTW
+    ########################################################################################################################
+    fftw_dir=$(basename $FFTW_URL)
+    fftw_dir=${fftw_dir%.*}
+    fftw_dir=${fftw_dir%.*}
+    mkdir $fftw_dir
+    wget --no-check-certificate --quiet -O - ${FFTW_URL} | gunzip -c | tar --strip-components=1 -x -C ./$fftw_dir
+    cd $fftw_dir
+
+    OLD_CFLAGS=$CFLAGS
+    ./configure --prefix=$INSTALL_PREFIX --enable-float --with-pic ${FFTW_FLAGS}
+    make -j4
+    make install
+
+    cd -
+    rm -fr $fftw_dir
+}
+
+read -p "Install FFTW? (y/n)" choice
+case "$choice" in 
+    y|Y ) install_fftw;;
+    n|N ) echo "skip FFTW install";;
     * ) echo "invalid";;
 esac
