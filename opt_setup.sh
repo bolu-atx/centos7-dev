@@ -79,3 +79,19 @@ n|N ) echo "skipping boost 158";;
       n|N ) echo "skipping boost 167";;
   * ) echo "invalid";;
       esac
+
+########################################################################################################################
+# MKL
+########################################################################################################################
+function install_mkl()
+{
+    yum-config-manager --add-repo https://yum.repos.intel.com/mkl/setup/intel-mkl.repo
+    yum install -y intel-mkl intel-openmp
+}
+
+read -p "Install MKL?" choice
+case "$choice" in 
+    y|Y ) install_mkl;;
+    n|N ) echo "skip MKL install";;
+    * ) echo "invalid";;
+esac
