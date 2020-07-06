@@ -28,7 +28,8 @@ RUN bash /tmp/setup.sh && rm /tmp/setup.sh
 # Expose ports for SSH and GDB
 EXPOSE 22 7777
 COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY opt_setup.sh /opt_setup.sh
+RUN chmod +x /start.sh /opt_setup.sh
 
 # Add dev user with password dev
 RUN useradd -ms /bin/bash dev
