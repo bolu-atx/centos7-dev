@@ -20,7 +20,7 @@ ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
 ENV TERM=xterm-256color
 
 WORKDIR /tmp
-COPY setup.sh /tmp/setup.sh
+COPY setup-gcc493.sh /tmp/setup.sh
 
 # Run setup script
 RUN bash /tmp/setup.sh && rm /tmp/setup.sh

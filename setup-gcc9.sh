@@ -17,17 +17,8 @@ fi
 echo "CMake version"
 cmake --version
 
-
-
 ########################################################################################################################
 # gcc 493 
 ########################################################################################################################
-yum install -y libmpc-devel mpfr-devel gmp-devel
-
-cd /usr/src/
-curl ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.9.3/gcc-4.9.3.tar.bz2 -O
-tar xvfj gcc-4.9.3.tar.bz2
-cd gcc-4.9.3
-./configure --disable-multilib --enable-languages=c,c++
-make -j `grep processor /proc/cpuinfo | wc -l`
-make install
+yum install -y centos-release-scl-rh
+yum install -y devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-gdb
