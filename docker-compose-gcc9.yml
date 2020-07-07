@@ -4,7 +4,7 @@ services:
     build: # use the Dockerfile in the current directory
       context: .
       args:
-        gcc_version: 485
+        gcc_version: 9
       dockerfile: Dockerfile
     security_opt: # options needed for gdb debugging
       - seccomp:unconfined
